@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: suspected_and_confirmed_patients
+    description: One row per patient who is suspected or confirmed for COVID-19
+    columns:
+      - name: patient_id
+        description: Primary key, unique ID for patients
+      - name: created_date
+        description: Date that the patient was first registered
+      - name: first_contacted_date
+        description: Date the patient was first contacted for an initial interview
+      - name: number_of_contacts
+        description: The number of contacts reported by this patient
+      - name: age_in_years
+        description: The age of the patient in years
+      - name: owner_name
+        description: The name of the health worker who is following up with this patient
+      - name: contacted_within_2days
+        description: Whether the patient was contacted within 2 days of the first lab result
+      - name: case_registered_within_2days_sample_collection
+        description: Whether the patient was first registered within two days of a sample being collected
+      - name: symptomatic_tested_under_4days
+        description: Whether a sample was collected in less than 4 days of a patient reporting symptoms
+      - name: final_lab_result
+        description: The result from the most recent lab for this patient
+      - name: merged_case_status
+        description: The COVID-19 status of a patient as determined by lab result if available, or self-report
+      - name: symptomatic
+        description: Whether the patient was ever symptomatic
+      - name: symptomatic_onset_date
+        description: The date that the patient first developed symptoms
+      - name: symptomatic_reported_date
+        description: The date the patient reported the symptoms
+  
+  - name: contacts
+    description: One row per contact of named by a patient
+    columns:
+      - name: contact_id
+        description: Primary key, unique ID for contacts
+      - name: created_date
+        description: Date that the contact was first registered
+      - name: first_contacted_date
+        description: Date the contact was first contacted for an initial interview
+      - name: age_in_years
+        description: The age of the contact in years
+      - name: owner_name
+        description: The name of the health worker who is following up with this contact
+      - name: symptomatic_tested_under_4days
+        description: Whether a sample was collected in less than 4 days of a contact reporting symptoms
+      - name: final_lab_result
+        description: The result from the most recent lab for this contact
+      - name: symptomatic
+        description: Whether the contact was ever symptomatic
+      - name: symptomatic_onset_date
+        description: The date that the contact first developed symptoms
+      - name: symptomatic_reported_date
+        description: The date the patient reported the symptoms
+      - name: contact_cascade_label
+        description: Whether the contact was asymptomatic, symptomatic before the initial interview, or became sympotmatic during the monitoring phase
